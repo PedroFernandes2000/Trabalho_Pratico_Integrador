@@ -1,6 +1,8 @@
 
 package svv.sistema_de_venda_de_veiculos.table_classes;
 
+import java.sql.Date;
+
 /**
  *
  * @author Quarteto Sinistro
