@@ -10,17 +10,4 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>svv.sistema_de_venda_de_veiculos.Sistema_de_Venda_de_Veiculos</exec.mainClass>
     </properties>
-    <build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.13.0</version>
-            <configuration>
-                <source>11</source>  <!-- Ou outra versão como 17 ou 8 -->
-                <target>11</target>  <!-- Ou outra versão -->
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
 </project>
