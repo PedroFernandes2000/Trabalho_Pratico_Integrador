@@ -28,11 +28,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jButton1" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="clientes" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="veiculos" min="-2" pref="131" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                              <Component id="vendedores" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
@@ -40,7 +40,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="contratos" min="-2" pref="131" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -56,10 +56,10 @@
               <Component id="texto1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="clientes" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="veiculos" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="vendedores" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="contratos" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="218" max="32767" attributes="0"/>
           </Group>
@@ -83,7 +83,7 @@
         <Property name="text" type="java.lang.String" value="Consultar:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="clientes">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -91,10 +91,11 @@
         <Property name="text" type="java.lang.String" value="Clientes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="clientesMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clientesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="veiculos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -102,10 +103,10 @@
         <Property name="text" type="java.lang.String" value="Veiculos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="veiculosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="contratos">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -113,10 +114,10 @@
         <Property name="text" type="java.lang.String" value="Contratos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contratosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="vendedores">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -124,7 +125,7 @@
         <Property name="text" type="java.lang.String" value="Vendedores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendedoresActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

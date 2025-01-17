@@ -25,10 +25,10 @@ public class Dashboard_SVV extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         texto1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        clientes = new javax.swing.JButton();
+        veiculos = new javax.swing.JButton();
+        contratos = new javax.swing.JButton();
+        vendedores = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -38,35 +38,40 @@ public class Dashboard_SVV extends javax.swing.JPanel {
         texto1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         texto1.setText("Consultar:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        clientes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        clientes.setText("Clientes");
+        clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clientesMouseClicked(evt);
+            }
+        });
+        clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                clientesActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("Veiculos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        veiculos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        veiculos.setText("Veiculos");
+        veiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                veiculosActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setText("Contratos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        contratos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contratos.setText("Contratos");
+        contratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                contratosActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setText("Vendedores");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        vendedores.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        vendedores.setText("Vendedores");
+        vendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                vendedoresActionPerformed(evt);
             }
         });
 
@@ -81,16 +86,16 @@ public class Dashboard_SVV extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(veiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4))
+                                .addComponent(vendedores))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(179, 179, 179)
                                 .addComponent(jLabel1)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(contratos, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,37 +107,43 @@ public class Dashboard_SVV extends javax.swing.JPanel {
                 .addComponent(texto1)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(veiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contratos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(218, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void vendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedoresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_vendedoresActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_clientesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void contratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_contratosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void veiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veiculosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_veiculosActionPerformed
+
+    private void clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesMouseClicked
+        new clientesCRUD().setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_clientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton clientes;
+    private javax.swing.JButton contratos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel texto1;
+    private javax.swing.JButton veiculos;
+    private javax.swing.JButton vendedores;
     // End of variables declaration//GEN-END:variables
 }
