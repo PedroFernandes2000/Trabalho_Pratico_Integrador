@@ -19,7 +19,7 @@ public class VeiculoDAO {
     }
 
     // Método para inserir um veículo
-    public void inserir(Veiculo veiculo) throws SQLException {
+    public void inserir(Veiculo veiculo){
         String sql = "INSERT INTO veiculo (veiculo_id, marca, modelo, placa, ano) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, veiculo.getVeiculoId());
@@ -28,11 +28,13 @@ public class VeiculoDAO {
             stmt.setString(4, veiculo.getPlaca());
             stmt.setInt(5, veiculo.getAno());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao inserir o veiculo!");
         }
     }
 
     // Método para buscar um veículo por ID
-    public Veiculo buscarPorId(int id) throws SQLException {
+    public Veiculo buscarPorId(int id){
         String sql = "SELECT * FROM veiculo WHERE veiculo_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -46,13 +48,17 @@ public class VeiculoDAO {
                         rs.getInt("ano")
                     );
                 }
-            }
+            }catch(Exception e){
+            System.out.println("Erro ao buscar o veiculo!");
+        }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o veiculo!");
         }
         return null;
     }
 
     // Método para listar todos os veículos
-    public List<Veiculo> listarTodos() throws SQLException {
+    public List<Veiculo> listarTodos(){
         String sql = "SELECT * FROM veiculo";
         List<Veiculo> veiculos = new ArrayList<>();
         try (Statement stmt = connection.createStatement();
@@ -66,12 +72,14 @@ public class VeiculoDAO {
                     rs.getInt("ano")
                 ));
             }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o veiculo!");
         }
         return veiculos;
     }
 
     // Método para atualizar um veículo
-    public void atualizar(Veiculo veiculo) throws SQLException {
+    public void atualizar(Veiculo veiculo){
         String sql = "UPDATE veiculo SET marca = ?, modelo = ?, placa = ?, ano = ? WHERE veiculo_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, veiculo.getMarca());
@@ -80,15 +88,19 @@ public class VeiculoDAO {
             stmt.setInt(4, veiculo.getAno());
             stmt.setInt(5, veiculo.getVeiculoId());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao atualizar o veiculo!");
         }
     }
 
     // Método para excluir um veículo
-    public void excluir(int id) throws SQLException {
+    public void excluir(int id){
         String sql = "DELETE FROM veiculo WHERE veiculo_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao excluir o veiculo!");
         }
     }
 }
