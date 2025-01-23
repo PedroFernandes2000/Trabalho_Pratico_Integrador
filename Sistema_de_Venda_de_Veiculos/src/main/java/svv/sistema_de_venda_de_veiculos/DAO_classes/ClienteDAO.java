@@ -18,7 +18,7 @@ public class ClienteDAO {
         this.connection = connection;
     }
 
-    public void inserir(Cliente cliente) throws SQLException {
+    public void inserir(Cliente cliente){
         String sql = "INSERT INTO cliente (cliente_id, nome, endereco, telefone) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, cliente.getClienteId());
@@ -26,10 +26,12 @@ public class ClienteDAO {
             stmt.setString(3, cliente.getEndereco());
             stmt.setInt(4, cliente.getTelefone());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao inserir o cliente!");
         }
     }
 
-    public Cliente buscarPorId(int id) throws SQLException {
+    public Cliente buscarPorId(int id){
         String sql = "SELECT * FROM cliente WHERE cliente_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -42,12 +44,16 @@ public class ClienteDAO {
                         rs.getInt("telefone")
                     );
                 }
+            }catch(Exception e){
+            System.out.println("Erro ao buscar o cliente!");
             }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o cliente!");
         }
         return null;
     }
 
-    public List<Cliente> listarTodos() throws SQLException {
+    public List<Cliente> listarTodos(){
         String sql = "SELECT * FROM cliente";
         List<Cliente> clientes = new ArrayList<>();
         try (Statement stmt = connection.createStatement();
@@ -60,11 +66,13 @@ public class ClienteDAO {
                     rs.getInt("telefone")
                 ));
             }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o cliente!");
         }
         return clientes;
     }
 
-    public void atualizar(Cliente cliente) throws SQLException {
+    public void atualizar(Cliente cliente){
         String sql = "UPDATE cliente SET nome = ?, endereco = ?, telefone = ? WHERE cliente_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
@@ -72,14 +80,18 @@ public class ClienteDAO {
             stmt.setInt(3, cliente.getTelefone());
             stmt.setInt(4, cliente.getClienteId());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao atualizar o cliente!");
         }
     }
 
-    public void excluir(int id) throws SQLException {
+    public void excluir(int id){
         String sql = "DELETE FROM cliente WHERE cliente_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao excluir o cliente!");
         }
     }
 }
