@@ -17,7 +17,7 @@ public class VendedorDAO {
         this.connection = connection;
     }
 
-    public void inserir(Vendedor vendedor) throws SQLException {
+    public void inserir(Vendedor vendedor){
         String sql = "INSERT INTO vendedor (vendedor_id, nome, telefone, departamento) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, vendedor.getVendedorId());
@@ -25,10 +25,12 @@ public class VendedorDAO {
             stmt.setInt(3, vendedor.getTelefone());
             stmt.setString(4, vendedor.getDepartamento());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao inserir o vendedor!");
         }
     }
 
-    public Vendedor buscarPorId(int id) throws SQLException {
+    public Vendedor buscarPorId(int id){
         String sql = "SELECT * FROM vendedor WHERE vendedor_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -41,12 +43,16 @@ public class VendedorDAO {
                         rs.getString("departamento")
                     );
                 }
-            }
+            }catch(Exception e){
+            System.out.println("Erro ao buscar o vendedor!");
+        }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o vendedor!");
         }
         return null;
     }
 
-    public List<Vendedor> listarTodos() throws SQLException {
+    public List<Vendedor> listarTodos(){
         String sql = "SELECT * FROM vendedor";
         List<Vendedor> vendedores = new ArrayList<>();
         try (Statement stmt = connection.createStatement();
@@ -59,11 +65,13 @@ public class VendedorDAO {
                     rs.getString("departamento")
                 ));
             }
+        }catch(Exception e){
+            System.out.println("Erro ao buscar o vendedor!");
         }
         return vendedores;
     }
 
-    public void atualizar(Vendedor vendedor) throws SQLException {
+    public void atualizar(Vendedor vendedor){
         String sql = "UPDATE vendedor SET nome = ?, telefone = ?, departamento = ? WHERE vendedor_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, vendedor.getNome());
@@ -71,14 +79,18 @@ public class VendedorDAO {
             stmt.setString(3, vendedor.getDepartamento());
             stmt.setInt(4, vendedor.getVendedorId());
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao atualizar o vendedor!");
         }
     }
 
-    public void excluir(int id) throws SQLException {
+    public void excluir(int id){
         String sql = "DELETE FROM vendedor WHERE vendedor_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+        }catch(Exception e){
+            System.out.println("Erro ao excluir o vendedor!");
         }
     }
 }
