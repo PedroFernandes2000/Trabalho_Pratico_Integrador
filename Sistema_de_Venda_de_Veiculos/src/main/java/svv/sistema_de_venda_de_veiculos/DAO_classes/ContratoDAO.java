@@ -13,19 +13,18 @@ import svv.sistema_de_venda_de_veiculos.table_classes.Contrato;
 public class ContratoDAO {
     private Connection connection;
 
-    public ContratoDAO(Connection connection) {
-        this.connection = connection;
+    public ContratoDAO(){
     }
 
     // Método para inserir um contrato
     public void inserir(Contrato contrato){
-        String sql = "INSERT INTO contrato (contrato_id, cliente_id, veiculo_id, data_inicio, data_fim, valor) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO contrato (contrato_id, cliente_id, vendedor_id, veiculo_id, data, valor) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, contrato.getContratoId());
             stmt.setInt(2, contrato.getClienteId());
-            stmt.setInt(3, contrato.getVeiculoId());
-            stmt.setDate(4, new java.sql.Date(contrato.getDataInicio().getTime()));
-            stmt.setDate(5, new java.sql.Date(contrato.getDataFim().getTime()));
+            stmt.setInt(3, contrato.getVendedorId());
+            stmt.setInt(4, contrato.getVeiculoId());
+            stmt.setString(5, contrato.getData());
             stmt.setDouble(6, contrato.getValor());
             stmt.executeUpdate();
         }catch(Exception e){
@@ -43,9 +42,9 @@ public class ContratoDAO {
                     return new Contrato(
                         rs.getInt("contrato_id"),
                         rs.getInt("cliente_id"),
+                        rs.getInt("vendedor_id"),
                         rs.getInt("veiculo_id"),
-                        rs.getDate("data_inicio"),
-                        rs.getDate("data_fim"),
+                        rs.getString("data"),
                         rs.getDouble("valor")
                     );
                 }
@@ -68,9 +67,9 @@ public class ContratoDAO {
                 contratos.add(new Contrato(
                     rs.getInt("contrato_id"),
                     rs.getInt("cliente_id"),
+                    rs.getInt("vendedor_id"),
                     rs.getInt("veiculo_id"),
-                    rs.getDate("data_inicio"),
-                    rs.getDate("data_fim"),
+                    rs.getString("data"),
                     rs.getDouble("valor")
                 ));
             }
@@ -82,12 +81,12 @@ public class ContratoDAO {
 
     // Método para atualizar um contrato
     public void atualizar(Contrato contrato){
-        String sql = "UPDATE contrato SET cliente_id = ?, veiculo_id = ?, data_inicio = ?, data_fim = ?, valor = ? WHERE contrato_id = ?";
+        String sql = "UPDATE contrato SET cliente_id = ?,vendedor_id, veiculo_id = ?, data = ?, valor = ? WHERE contrato_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, contrato.getClienteId());
-            stmt.setInt(2, contrato.getVeiculoId());
-            stmt.setDate(3, new java.sql.Date(contrato.getDataInicio().getTime()));
-            stmt.setDate(4, new java.sql.Date(contrato.getDataFim().getTime()));
+            stmt.setInt(2, contrato.getVendedorId());
+            stmt.setInt(3, contrato.getVeiculoId());
+            stmt.setString(4, contrato.getData());
             stmt.setDouble(5, contrato.getValor());
             stmt.setInt(6, contrato.getContratoId());
             stmt.executeUpdate();
