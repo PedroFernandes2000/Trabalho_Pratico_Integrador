@@ -14,8 +14,7 @@ public class ClienteDAO {
     
     private Connection connection;
 
-    public ClienteDAO(Connection connection) {
-        this.connection = connection;
+    public ClienteDAO(){   
     }
 
     public void inserir(Cliente cliente){
@@ -24,7 +23,7 @@ public class ClienteDAO {
             stmt.setInt(1, cliente.getClienteId());
             stmt.setString(2, cliente.getNome());
             stmt.setString(3, cliente.getEndereco());
-            stmt.setInt(4, cliente.getTelefone());
+            stmt.setString(4, cliente.getTelefone());
             stmt.executeUpdate();
         }catch(Exception e){
             System.out.println("Erro ao inserir o cliente!");
@@ -41,7 +40,7 @@ public class ClienteDAO {
                         rs.getInt("cliente_id"),
                         rs.getString("nome"),
                         rs.getString("endereco"),
-                        rs.getInt("telefone")
+                        rs.getString("telefone")
                     );
                 }
             }catch(Exception e){
@@ -63,7 +62,7 @@ public class ClienteDAO {
                     rs.getInt("cliente_id"),
                     rs.getString("nome"),
                     rs.getString("endereco"),
-                    rs.getInt("telefone")
+                    rs.getString("telefone")
                 ));
             }
         }catch(Exception e){
@@ -77,7 +76,7 @@ public class ClienteDAO {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getEndereco());
-            stmt.setInt(3, cliente.getTelefone());
+            stmt.setString(3, cliente.getTelefone());
             stmt.setInt(4, cliente.getClienteId());
             stmt.executeUpdate();
         }catch(Exception e){
