@@ -13,8 +13,7 @@ import java.util.List;
 public class VendedorDAO {
      private Connection connection;
 
-    public VendedorDAO(Connection connection) {
-        this.connection = connection;
+    public VendedorDAO() {
     }
 
     public void inserir(Vendedor vendedor){
@@ -22,7 +21,7 @@ public class VendedorDAO {
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, vendedor.getVendedorId());
             stmt.setString(2, vendedor.getNome());
-            stmt.setInt(3, vendedor.getTelefone());
+            stmt.setString(3, vendedor.getTelefone());
             stmt.setString(4, vendedor.getDepartamento());
             stmt.executeUpdate();
         }catch(Exception e){
@@ -39,7 +38,7 @@ public class VendedorDAO {
                     return new Vendedor(
                         rs.getInt("vendedor_id"),
                         rs.getString("nome"),
-                        rs.getInt("telefone"),
+                        rs.getString("telefone"),
                         rs.getString("departamento")
                     );
                 }
@@ -61,7 +60,7 @@ public class VendedorDAO {
                 vendedores.add(new Vendedor(
                     rs.getInt("vendedor_id"),
                     rs.getString("nome"),
-                    rs.getInt("telefone"),
+                    rs.getString("telefone"),
                     rs.getString("departamento")
                 ));
             }
@@ -75,7 +74,7 @@ public class VendedorDAO {
         String sql = "UPDATE vendedor SET nome = ?, telefone = ?, departamento = ? WHERE vendedor_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, vendedor.getNome());
-            stmt.setInt(2, vendedor.getTelefone());
+            stmt.setString(2, vendedor.getTelefone());
             stmt.setString(3, vendedor.getDepartamento());
             stmt.setInt(4, vendedor.getVendedorId());
             stmt.executeUpdate();
