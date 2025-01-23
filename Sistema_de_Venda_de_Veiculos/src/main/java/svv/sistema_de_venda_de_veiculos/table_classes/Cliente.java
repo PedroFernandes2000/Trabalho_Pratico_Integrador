@@ -9,10 +9,10 @@ public class Cliente {
     private int clienteId;
     private String nome;
     private String endereco;
-    private int telefone;
+    private String telefone;
 
     // Construtor, getters e setters
-    public Cliente(int clienteId, String nome, String endereco, int telefone) {
+    public Cliente(int clienteId, String nome, String endereco, String telefone) {
         this.clienteId = clienteId;
         this.nome = nome;
         this.endereco = endereco;
@@ -43,11 +43,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }
