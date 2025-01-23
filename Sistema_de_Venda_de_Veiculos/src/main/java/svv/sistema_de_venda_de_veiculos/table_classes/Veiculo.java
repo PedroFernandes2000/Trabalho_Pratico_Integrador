@@ -9,16 +9,16 @@ public class Veiculo {
     private int veiculoId;
     private String marca;
     private String modelo;
-    private String placa;
     private int ano;
+    private String chassi;
 
     // Construtor
-    public Veiculo(int veiculoId, String marca, String modelo, String placa, int ano) {
+    public Veiculo(int veiculoId, String marca, String modelo, int ano, String chassi) {
         this.veiculoId = veiculoId;
         this.marca = marca;
         this.modelo = modelo;
-        this.placa = placa;
         this.ano = ano;
+        this.chassi = chassi;
     }
 
     // Getters e Setters
@@ -46,19 +46,19 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
     public int getAno() {
         return ano;
     }
 
     public void setAno(int ano) {
         this.ano = ano;
+    }
+    
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 }
