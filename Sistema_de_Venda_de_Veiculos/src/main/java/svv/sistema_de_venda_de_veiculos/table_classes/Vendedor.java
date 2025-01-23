@@ -8,11 +8,11 @@ package svv.sistema_de_venda_de_veiculos.table_classes;
 public class Vendedor {
     private int vendedorId;
     private String nome;
-    private int telefone;
+    private String telefone;
     private String departamento;
 
     // Construtor, getters e setters
-    public Vendedor(int vendedorId, String nome, int telefone, String departamento) {
+    public Vendedor(int vendedorId, String nome, String telefone, String departamento) {
         this.vendedorId = vendedorId;
         this.nome = nome;
         this.telefone = telefone;
@@ -35,11 +35,11 @@ public class Vendedor {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
