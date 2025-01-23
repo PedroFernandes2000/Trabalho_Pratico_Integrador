@@ -1,8 +1,6 @@
 
 package svv.sistema_de_venda_de_veiculos.table_classes;
 
-import java.sql.Date;
-
 /**
  *
  * @author Quarteto Sinistro
@@ -10,18 +8,18 @@ import java.sql.Date;
 public class Contrato {
     private int contratoId;
     private int clienteId;
+    private int vendedorId;
     private int veiculoId;
-    private Date dataInicio;
-    private Date dataFim;
+    private String data;
     private double valor;
 
     // Construtor
-    public Contrato(int contratoId, int clienteId, int veiculoId, Date dataInicio, Date dataFim, double valor) {
+    public Contrato(int contratoId, int clienteId, int vendedorId, int veiculoId, String data, double valor) {
         this.contratoId = contratoId;
         this.clienteId = clienteId;
+        this.vendedorId = vendedorId;
         this.veiculoId = veiculoId;
-        this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
+        this.data = data;
         this.valor = valor;
     }
 
@@ -41,7 +39,15 @@ public class Contrato {
     public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
+    
+    public int getVendedorId() {
+        return vendedorId;
+    }
 
+    public void setVendedorId(int vendedorId) {
+        this.vendedorId = vendedorId;
+    }    
+   
     public int getVeiculoId() {
         return veiculoId;
     }
@@ -50,20 +56,12 @@ public class Contrato {
         this.veiculoId = veiculoId;
     }
 
-    public Date getDataInicio() {
-        return dataInicio;
+    public String getData() {
+        return data;
     }
 
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public Date getDataFim() {
-        return dataFim;
-    }
-
-    public void setDataFim(Date dataFim) {
-        this.dataFim = dataFim;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public double getValor() {
