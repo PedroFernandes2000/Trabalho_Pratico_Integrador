@@ -14,19 +14,18 @@ import java.util.List;
 public class VeiculoDAO {
      private Connection connection;
 
-    public VeiculoDAO(Connection connection) {
-        this.connection = connection;
+    public VeiculoDAO(){  
     }
 
     // Método para inserir um veículo
     public void inserir(Veiculo veiculo){
-        String sql = "INSERT INTO veiculo (veiculo_id, marca, modelo, placa, ano) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO veiculo (veiculo_id, marca, modelo, ano, chassi) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, veiculo.getVeiculoId());
             stmt.setString(2, veiculo.getMarca());
             stmt.setString(3, veiculo.getModelo());
-            stmt.setString(4, veiculo.getPlaca());
-            stmt.setInt(5, veiculo.getAno());
+            stmt.setInt(4, veiculo.getAno());
+            stmt.setString(5, veiculo.getChassi());
             stmt.executeUpdate();
         }catch(Exception e){
             System.out.println("Erro ao inserir o veiculo!");
@@ -44,8 +43,8 @@ public class VeiculoDAO {
                         rs.getInt("veiculo_id"),
                         rs.getString("marca"),
                         rs.getString("modelo"),
-                        rs.getString("placa"),
-                        rs.getInt("ano")
+                        rs.getInt("ano"),
+                        rs.getString("chassi")
                     );
                 }
             }catch(Exception e){
@@ -68,8 +67,8 @@ public class VeiculoDAO {
                     rs.getInt("veiculo_id"),
                     rs.getString("marca"),
                     rs.getString("modelo"),
-                    rs.getString("placa"),
-                    rs.getInt("ano")
+                    rs.getInt("ano"),
+                    rs.getString("chassi")
                 ));
             }
         }catch(Exception e){
@@ -80,12 +79,12 @@ public class VeiculoDAO {
 
     // Método para atualizar um veículo
     public void atualizar(Veiculo veiculo){
-        String sql = "UPDATE veiculo SET marca = ?, modelo = ?, placa = ?, ano = ? WHERE veiculo_id = ?";
+        String sql = "UPDATE veiculo SET marca = ?, modelo = ?, ano = ?, chassi = ? WHERE veiculo_id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, veiculo.getMarca());
             stmt.setString(2, veiculo.getModelo());
-            stmt.setString(3, veiculo.getPlaca());
-            stmt.setInt(4, veiculo.getAno());
+            stmt.setInt(3, veiculo.getAno());
+            stmt.setString(4, veiculo.getChassi());
             stmt.setInt(5, veiculo.getVeiculoId());
             stmt.executeUpdate();
         }catch(Exception e){
